@@ -20,9 +20,37 @@ namespace TravelPal
     /// </summary>
     public partial class MainWindow : Window
     {
+        UserManager userManager = new();
         public MainWindow()
         {
             InitializeComponent();
+            Admin admin = new Admin("admin","password", Country.Sweden);
+            User user = new User("Gandalf", "password", Country.Sweden);
+            userManager.addUser(admin);
+            userManager.addUser(user);
+
+        }
+
+        private void btnSignIn_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (userManager.signInUser(txtUsername.Text, pswPassword.ToString()))
+            {
+                //bajs
+                return;
+            }
+            else
+            {
+                lblWarning.Content = "Username or password wrong!";
+            }
+        }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new(userManager);
+
+            registerWindow.Show();
+            
         }
     }
 }
