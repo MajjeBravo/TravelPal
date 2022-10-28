@@ -21,7 +21,7 @@ namespace TravelPal
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {   
         UserManager userManager = new();
         public MainWindow()
         {
@@ -38,6 +38,7 @@ namespace TravelPal
 
             if (userManager.signInUser(txtUsername.Text, pswPassword.Password))
             {
+
                 TravelsWindow travelsWindow = new(userManager);
                 travelsWindow.Show();
                 this.Close();

@@ -34,7 +34,8 @@ namespace TravelPal
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             Country country = (Country)cmbCountry.SelectedItem;
-            User newUser = new User(txtUsername.Text, pswPassword.ToString(), country);
+
+            User newUser = new User(txtUsername.Text, pswPassword.Password.ToString(), country);
 
             if (userManager.addUser(newUser))
             {

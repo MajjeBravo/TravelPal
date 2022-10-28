@@ -16,6 +16,7 @@ namespace TravelPal
         public bool addUser(IUser userToAdd)
         {
             int userIndex = users.FindIndex(user => user.Username.ToLower().Equals(userToAdd.Username.ToLower()));
+
             if (userIndex == -1 && validateUsername(userToAdd.Username))
             {
                 users.Add(userToAdd);
@@ -51,7 +52,8 @@ namespace TravelPal
 
         public bool signInUser(string username, string password)
         {
-            int userIndex = users.FindIndex(user => user.Username.ToLower().Equals(username.ToLower()) && user.Password.Equals(password));
+            int userIndex = users.FindIndex(user => user.Username.Equals(username) && user.Password.Equals(password));
+
             if (userIndex == -1)
             {
                 return false;

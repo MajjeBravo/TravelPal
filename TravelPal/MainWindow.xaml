@@ -53,7 +53,9 @@
             Grid.Column="1"
             Content=""
             VerticalAlignment="Center"
-            Foreground="White" Grid.ColumnSpan="4" Margin="126,0,0,0"/>
+            Foreground="White" 
+            Grid.ColumnSpan="4" 
+            Margin="126,0,0,0"/>
 
         <TextBox
             x:Name="txtUsername"
