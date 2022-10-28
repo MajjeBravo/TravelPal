@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravelPal
+namespace TravelPal.Models.Travel
 {
-    public enum TripType
+    internal class Vacation
     {
-        Leisure,
-        Work
     }
 }

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravelPal
+namespace TravelPal.Models.Enums
 {
-    public enum EuCountry
+    public enum TripType
     {
-        Switzerland,
-        Spain
+        Leisure,
+        Work
     }
 }

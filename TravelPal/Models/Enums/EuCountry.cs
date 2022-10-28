@@ -4,15 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravelPal
+namespace TravelPal.Models.Enums
 {
-    public enum Country
+    public enum EuCountry
     {
-        Sweden,
-        Denmark,
-        Norway,
-        Jordan
-
+        Switzerland,
+        Spain
     }
-   
 }

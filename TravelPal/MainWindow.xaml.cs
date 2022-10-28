@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TravelPal.Models.Enums;
+using TravelPal.Models.User;
 
 namespace TravelPal
 {
@@ -34,10 +36,12 @@ namespace TravelPal
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
 
-            if (userManager.signInUser(txtUsername.Text, pswPassword.ToString()))
+            if (userManager.signInUser(txtUsername.Text, pswPassword.Password))
             {
-                //bajs
-                return;
+                TravelsWindow travelsWindow = new(userManager);
+                travelsWindow.Show();
+                this.Close();
+                
             }
             else
             {

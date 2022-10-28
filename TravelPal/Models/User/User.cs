@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelPal.Models.Enums;
 
-namespace TravelPal
+namespace TravelPal.Models.User
 {
     internal class User : IUser
     {

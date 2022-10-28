@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.Models.Enums;
+using TravelPal.Models.User;
 
 namespace TravelPal
 {
@@ -41,7 +43,6 @@ namespace TravelPal
             else
             {
                 lblWarning.Content = "Could not create user!";
-
             }
         }
 
