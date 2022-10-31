@@ -39,6 +39,7 @@ namespace TravelPal
 
             if (userManager.addUser(newUser))
             {
+                
                 this.Close();
             }
             else
@@ -49,3 +50,4 @@ namespace TravelPal
 
     }
 }
+

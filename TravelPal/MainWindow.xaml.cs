@@ -25,6 +25,7 @@ namespace TravelPal
         UserManager userManager = new();
         public MainWindow()
         {
+            // Two pre-set default accounts 
             InitializeComponent();
             Admin admin = new Admin("admin","password", Country.Sweden);
             User user = new User("Gandalf", "password", Country.Sweden);

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace TravelPal.Models.Enums
 {
+
+    // All countries in alphabetic order
     public enum Country
     {
         // A
@@ -141,6 +143,8 @@ namespace TravelPal.Models.Enums
         Myanmar,
         // N
         Namibia,
+        Nangijala, 
+        Narnia,
         Nauru,
         Nepal,
         Netherlands,

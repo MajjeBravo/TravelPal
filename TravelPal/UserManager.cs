@@ -17,7 +17,7 @@ namespace TravelPal
         {
             int userIndex = users.FindIndex(user => user.Username.ToLower().Equals(userToAdd.Username.ToLower()));
 
-            if (userIndex == -1 && validateUsername(userToAdd.Username))
+            if (userIndex == -1 && validateUsername(userToAdd.Username) && validatePassword(userToAdd.Password))
             {
                 users.Add(userToAdd);
                 return true;
@@ -34,20 +34,38 @@ namespace TravelPal
 
         public bool updateUsername(IUser userToUpdate, string newUsername)
         {
-            int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));
+            int userIndex = users.FindIndex(user => user.Username.Equals(newUsername));
 
-            if (userIndex == -1 || !validateUsername(newUsername))
+            bool userNameAlreadyExists = false;
+            int userI = 0;
+            foreach(IUser user in users)
             {
-                return false;
+                if(user.Username == newUsername)
+                {
+                    userNameAlreadyExists = true;
+                }
+
+                userI++;
             }
 
-            users[userIndex].Username = newUsername;
-            return true;
+            if (userIndex == -1 && validateUsername(newUsername))
+            {
+                users[userIndex].Username = newUsername;
+                return true;
+            }
 
+            return false;
         }
+
         private bool validateUsername(string username)
         {
             return username.Length > 20 || username.Length < 3 ? false : true;
+        }
+
+
+        private bool validatePassword(string password)
+        {
+            return password.Length > 20 || password.Length < 5 ? false : true;
         }
 
         public bool signInUser(string username, string password)
@@ -68,3 +86,5 @@ namespace TravelPal
 
     }
 }
+
+
