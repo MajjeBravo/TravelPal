@@ -44,7 +44,7 @@ namespace TravelPal
             }
             else
             {
-                lblWarning.Content = "Could not create user!";
+                lblWarning.Content = "Could not create user, Please check criteria!";
             }
         }
 

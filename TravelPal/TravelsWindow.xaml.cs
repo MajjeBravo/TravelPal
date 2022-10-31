@@ -29,5 +29,35 @@ namespace TravelPal
 
             lblUsername.Content = userManager.signedInUser.Username;
         }
+
+        private void btnAddTravel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUserDetails_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSignOut_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

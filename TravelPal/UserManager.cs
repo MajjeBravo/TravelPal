@@ -32,6 +32,7 @@ namespace TravelPal
             return users.Remove(user);
         }
 
+
         public bool updateUsername(IUser userToUpdate, string newUsername)
         {
             int userIndex = users.FindIndex(user => user.Username.Equals(newUsername));
@@ -57,17 +58,19 @@ namespace TravelPal
             return false;
         }
 
+        // Validate username to meet critera max 20, minimum 3
         private bool validateUsername(string username)
         {
             return username.Length > 20 || username.Length < 3 ? false : true;
         }
 
-
+        // Validate password to meet criteria max 20, minimum 5
         private bool validatePassword(string password)
         {
             return password.Length > 20 || password.Length < 5 ? false : true;
         }
 
+        // Sign in user and check through index if user + password exist and match
         public bool signInUser(string username, string password)
         {
             int userIndex = users.FindIndex(user => user.Username.Equals(username) && user.Password.Equals(password));

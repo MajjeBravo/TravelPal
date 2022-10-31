@@ -24,21 +24,92 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-       
+
+        <Label
+            x:Name="lblWelcome"
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="Welcome:"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            FontFamily="Arial"
+            FontWeight="Bold"
+            Foreground="MintCream"
+            FontSize="20"
+            
+            
+            />
         <Label 
             x:Name="lblUsername"
             Grid.Row="0"
-            Grid.Column="0"
+            Grid.Column="1"
             Content="USERNAME"
+            HorizontalAlignment="Left"
             VerticalAlignment="Center"
             FontFamily="Arial"
             FontWeight="Bold"
             Foreground="MintCream"
-            FontSize="40"
-            Grid.ColumnSpan="4" 
-            Margin="126,0,0,0"/>
-
+            FontSize="20"
+            Grid.ColumnSpan="2" 
+            Margin="0,0,0,0"/>
+        <Button 
+            x:Name="btnAddTravel"
+            Grid.Row="5"
+            Grid.Column="0"
+            Content="Add Travel"
+            Height="30"
+            Margin="10,18,10,17" 
+            Click="btnAddTravel_Click"/>
+        <Button 
+            x:Name="btnRemove"
+            Grid.Row="5"
+            Grid.Column="1"
+            Content="Remove"
+            Height="30"
+            Margin="10,18,10,17" 
+            Click="btnRemove_Click"/>
+        <Button 
+            x:Name="btnDetails"
+            Grid.Row="5"
+            Grid.Column="2"
+            Content="Details"
+            Height="30"
+            Margin="10,18,10,17" 
+            Click="btnDetails_Click"/>
         
+        <Button
+            x:Name="btnUser"
+            Grid.Row="0"
+            Grid.Column="4"
+            Content="User"
+            Height="30"
+            Margin="10 0" 
+            Click="btnUser_Click"/>
+        <Button
+            x:Name="btnUserDetails"
+            Grid.Row="0"
+            Grid.Column="5"
+            Content="User Details"
+            Height="30"
+            Margin="10 0" 
+            Click="btnUserDetails_Click"/>
+        <Button
+            x:Name="btnSignOut"
+            Grid.Row="6"
+            Grid.Column="5"
+            Content="Sign Out"
+            Height="30"
+            Margin="10 0" 
+            Click="btnSignOut_Click"/>
+        
+
+        <ListView
+            x:Name="lvListView"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="4"
+            Margin="20"/>
+
 
     </Grid>
 </Window>
