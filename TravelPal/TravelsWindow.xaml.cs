@@ -21,6 +21,10 @@ namespace TravelPal
         {
             InitializeComponent();
             this.userManager = userManager;
+            if (userManager.signedInUser.GetType() == typeof(Admin))
+            {
+                btnAddTravel.Visibility = Visibility.Hidden;
+            }
             DateTime date = new DateTime();
 
             if(userManager.signedInUser == null)

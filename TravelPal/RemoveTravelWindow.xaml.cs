@@ -40,8 +40,14 @@ namespace TravelPal
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            this.user.removeTravel((Travel)lvTravels.SelectedItem);
-            lvTravels.Items.Remove(lvTravels.SelectedItem);
+            if (lvTravels.SelectedItem == null)
+            {
+                MessageBox.Show("To remove, please select an item from the list!");
+                return;
+            }
+            ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
+            user.removeTravel(selectedItem.Tag as Travel);
+            lvTravels.Items.RemoveAt(lvTravels.SelectedIndex);
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

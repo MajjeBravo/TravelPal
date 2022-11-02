@@ -30,14 +30,14 @@ namespace TravelPal
             InitializeComponent();
             
             this.userManager = userManager;
+            
             string departureCountry = txtDepartureLocation.Text;
             
-            string[] arrivalCountries = Enum.GetNames(typeof(Country));
-            cbArrivalCountry.ItemsSource = arrivalCountries;
+            
+            cbArrivalCountry.ItemsSource = Enum.GetValues(typeof(Country));
             cbArrivalCountry.SelectedIndex = 0;
 
-            string[] arrivalCountry = Enum.GetNames(typeof(Country));
-            cbArrivalCountry.ItemsSource = arrivalCountries;
+        
 
 
 
@@ -45,27 +45,55 @@ namespace TravelPal
 
 
 
-            string[] travelTypes = Enum.GetNames(typeof(TripType));
-            cmbTravelType.ItemsSource = travelTypes;
+            cmbTravelType.Items.Add("Vacation");
+            cmbTravelType.Items.Add("Trip");
+            cmbTravelType.SelectedIndex = 0;
+            cmbTripType.Items.Add("Leisure");
+            cmbTripType.Items.Add("Work");
+            cmbTripType.SelectedIndex = 0;
 
-
-
-            string[] tripTypes = Enum.GetNames(typeof(TripType));
-            cmbTripType.ItemsSource = tripTypes;
 
 
 
             this.userManager = userManager;
         }
 
+        
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            int i = 0;
+            if(txtDepartureLocation.Text.Length < 3)
+            {
+                MessageBox.Show("Departure must be more than 2 letters.");
+                return;
+            }
+            if(!int.TryParse(txtTravelers.Text, out i) || txtTravelers.Text.Length < 1)
+            {
+                MessageBox.Show("Travelers must be number.");
+                return;
+
+            }
+
             string departureLocation = txtDepartureLocation.Text;
-            // Country arrivalCountry = (Country)cbArrivalCountry.SelectedItem;
-            //int numberOfTravelers = Convert.ToInt32(txtTravelers.Text);
+            Country arrivalCountry = (Country)cbArrivalCountry.SelectedItem;
+            int numberOfTravelers = Convert.ToInt32(txtTravelers.Text != null ? txtTravelers.Text : "");
+
 
             User signedInUser = (User)userManager.signedInUser;
-            userManager.addTravel(signedInUser, new Trip("hej", Country.Afghanistan, 4, DateTime.Now, DateTime.Now, 4, TripType.Leisure));
+
+
+            if(cmbTravelType.Text == "Trip")
+            {
+                userManager.addTravel(signedInUser, new Trip(departureLocation, arrivalCountry, numberOfTravelers, DateTime.Now, DateTime.Now, 1, cmbTripType.Text == "Leisure" ? TripType.Leisure : TripType.Work));
+
+            }
+            else
+            {
+                userManager.addTravel(signedInUser, new Vacation(departureLocation, arrivalCountry, numberOfTravelers, DateTime.Now, DateTime.Now, 1, (bool)cmbAllInclusive.IsChecked));
+
+            }
+
+
             TravelsWindow travelsWindow = new(userManager);
             
             travelsWindow.Show();
@@ -134,24 +162,22 @@ namespace TravelPal
 
 
 
-        private void cbTravelType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cmbTravelType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //selectedTravelType = cmbTravelType.SelectedItem as string;
+            String selectedTravelType = cmbTravelType.SelectedItem as string;
 
-
-
-            //if (selectedTravelType == "Trip")
-            //{
-            //    cmbTripType.Visibility = Visibility.Visible;
-            //    cmbAllInclusive.Visibility = Visibility.Hidden;
-            //}
-            //else if (selectedTripType == "Vacation")
-            //{
-            //    cmbAllInclusive.Visibility = Visibility.Visible;
-            //    cmbTripType.Visibility = Visibility.Hidden;
-            //}
+            if (selectedTravelType == "Trip")
+            {
+                cmbTripType.Visibility = Visibility.Visible;
+                cmbAllInclusive.Visibility = Visibility.Hidden;
+            }
+            else if (selectedTravelType == "Vacation")
+            {
+                cmbAllInclusive.Visibility = Visibility.Visible;
+                cmbTripType.Visibility = Visibility.Hidden;
+            }
         }
-  
-      
+
+       
     }
 }

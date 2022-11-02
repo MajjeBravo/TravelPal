@@ -31,7 +31,7 @@ namespace TravelPal.Models.Travels
 
         public virtual string GetInfo() // TODO Virtual get info VG
         {
-            return this.countries.ToString() + ", " + this.travellers + " travellers, Start date: " + startDate.ToString() + ", End date: " + endDate.ToString();
+            return this.destination + ", " + this.countries.ToString() + ", " + this.travellers + " travellers, Start date: " + startDate.ToString() + ", End date: " + endDate.ToString();
         }
 
         private int calculateTravelDays()

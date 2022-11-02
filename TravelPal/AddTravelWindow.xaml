@@ -87,6 +87,8 @@
             Grid.Row="4"
             Grid.Column="1"
             Margin="10"
+            SelectionChanged="cmbTravelType_SelectionChanged"
+
             />
         <Button
             x:Name="btnAdd"
@@ -95,10 +97,10 @@
             Content="Add"
             Margin="10" 
             Click="btnAdd_Click"
+            
             HorizontalContentAlignment="Center"/>
         <ComboBox
             x:Name="cmbTripType"
-            Visibility="Hidden"
             Grid.Row="4"
             Grid.Column="2"
             Margin="10"

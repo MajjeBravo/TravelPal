@@ -14,7 +14,7 @@ namespace TravelPal.Models.Travels
 
         public override string GetInfo() // base = används i basklassen "ifall man ärver eller inte"
         {
-            return base.countries.ToString() + ", " + base.travellers + " travellers, Start date: " + startDate.ToString() + " , End date: " + endDate.ToString() + ", trip type: " + type;
+            return base.destination + ", " + base.countries.ToString() + ", " + base.travellers + " travellers, Start date: " + startDate.ToString() + " , End date: " + endDate.ToString() + ", trip type: " + type;
         }
     }
 }
