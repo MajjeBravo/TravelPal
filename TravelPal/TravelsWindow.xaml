@@ -76,11 +76,11 @@
             Height="30"
             Margin="10,18,10,17" 
             Click="btnDetails_Click"/>
-        
+
         <Button
             x:Name="btnUser"
             Grid.Row="0"
-            Grid.Column="4"
+            Grid.Column="3"
             Content="User"
             Height="30"
             Margin="10 0" 
@@ -88,11 +88,19 @@
         <Button
             x:Name="btnUserDetails"
             Grid.Row="0"
-            Grid.Column="5"
+            Grid.Column="4"
             Content="User Details"
             Height="30"
             Margin="10 0" 
             Click="btnUserDetails_Click"/>
+        <Button 
+            x:Name="btnInfo"
+            Grid.Row="0"
+            Grid.Column="5"
+            Content="Info"
+            Height="30"
+            Margin="10,18,10,17" 
+            Click="btnInfo_Click"/>
         <Button
             x:Name="btnSignOut"
             Grid.Row="6"
@@ -101,14 +109,14 @@
             Height="30"
             Margin="10 0" 
             Click="btnSignOut_Click"/>
-        
+
 
         <ListView
             x:Name="lvListView"
             Grid.Row="1"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="6"
             Grid.RowSpan="4"
-            Margin="20"/>
+            Margin="20,20,26,20"/>
 
 
     </Grid>

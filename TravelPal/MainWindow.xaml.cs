@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using TravelPal.Models.Enums;
 using TravelPal.Models.User;
 
@@ -29,6 +17,11 @@ namespace TravelPal
             InitializeComponent();
             Admin admin = new Admin("admin","password", Country.Sweden);
             User user = new User("Gandalf", "password", Country.Sweden);
+            Models.Travels.Trip gibraltar = new("Gibraltar", Country.Spain, 3, DateTime.Now, DateTime.Now.AddDays(4), 4, TripType.Leisure);
+            Models.Travels.Vacation kandahar = new("Kandahar", Country.Afghanistan, 8, DateTime.Now, DateTime.Now.AddDays(4), 4, true);
+            user.Travels.Add(gibraltar);
+            user.Travels.Add(kandahar);
+
             userManager.addUser(admin);
             userManager.addUser(user);
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TravelPal.Models.User;
 
 namespace TravelPal
@@ -33,41 +28,57 @@ namespace TravelPal
         }
 
 
-        public bool updateUsername(IUser userToUpdate, string newUsername)
+        public bool[] ValidateUserInput(IUser user, string username, string password)
         {
-            int userIndex = users.FindIndex(user => user.Username.Equals(newUsername));
+            bool[] validInputs = { false, false };
 
-            bool userNameAlreadyExists = false;
-            int userI = 0;
-            foreach(IUser user in users)
+            if(validateUsername(username))
             {
-                if(user.Username == newUsername)
-                {
-                    userNameAlreadyExists = true;
-                }
-
-                userI++;
+                validInputs[0] = true;
             }
 
-            if (userIndex == -1 && validateUsername(newUsername))
+            if (validatePassword(password))
             {
-                users[userIndex].Username = newUsername;
-                return true;
+                validInputs[1] = true;
             }
 
-            return false;
+            return validInputs;
+        }
+
+        public void updatePassword(IUser userToUpdate, string newPassword)
+        {
+            int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));
+
+            users[userIndex].Password = newPassword;
+            signedInUser.Password = newPassword;
+        }
+     
+
+        public void updateUsername(IUser userToUpdate, string newUsername)
+        {
+            int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));
+
+            users[userIndex].Username = newUsername;
+            signedInUser.Username = newUsername;
         }
 
         // Validate username to meet critera max 20, minimum 3
         private bool validateUsername(string username)
         {
-            return username.Length > 20 || username.Length < 3 ? false : true;
+            int userIndex = users.FindIndex(user => user.Username.Equals(username));
+
+            if(userIndex != -1 || username.Length <= 3 || username.Length >= 20)
+            { 
+                return false;
+            }
+
+            return true;
         }
 
         // Validate password to meet criteria max 20, minimum 5
         private bool validatePassword(string password)
         {
-            return password.Length > 20 || password.Length < 5 ? false : true;
+            return password.Length >= 5 && password.Length <= 20;
         }
 
         // Sign in user and check through index if user + password exist and match

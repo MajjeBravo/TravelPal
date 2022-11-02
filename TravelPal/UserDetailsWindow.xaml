@@ -1,0 +1,120 @@
+﻿<Window x:Class="TravelPal.UserDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPal"
+        mc:Ignorable="d"
+        Title="UserDetailsWindow" Height="450" Width="800">
+    <Grid Margin="20" Background="MediumSlateBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label 
+            Grid.Row="1"
+            Grid.Column="2"
+            Content="New Username"
+            VerticalAlignment="Center"
+            Foreground="White"/>
+        <Label 
+            Grid.Row="2"
+            Grid.Column="2"
+            Content="New Password"
+            VerticalAlignment="Center"
+            Foreground="White"/>
+        <Label 
+            Grid.Row="3"
+            Grid.Column="2"
+            Content="Confirm Password"
+            VerticalAlignment="Center"
+            Foreground="White"/>
+        <Label
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Content="User Details"
+            FontFamily="Arial"
+            FontWeight="Bold"
+            Foreground="MintCream"
+            FontSize="20"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left" Margin="86,0,0,0"/>
+        <Label 
+            x:Name="lblWarning"
+            Grid.Row="5"
+            Grid.Column="1"
+            Content=""
+            VerticalAlignment="Center"
+            Foreground="White" 
+            Grid.ColumnSpan="4" 
+            Margin="126,0,0,0"/>
+        <Label 
+            Grid.Row="4"
+            Grid.Column="2"
+            Content="Country of Origin"
+            VerticalAlignment="Center"
+            Foreground="White"/>
+        <Label 
+            Grid.Column="4"
+            Grid.Row="1"
+            x:Name="lblWarningMessage"
+            Content=""
+            VerticalAlignment="Top"
+            Foreground="White" Grid.ColumnSpan="2" Margin="31,22,0,0"/>
+        <ComboBox
+            x:Name="cmbCountry"
+            Grid.Row="4"
+            Grid.Column="3"
+            Height="30"
+            VerticalContentAlignment="Center"/>
+
+        <TextBox
+            x:Name="txtUsername"
+            Grid.Row="1"
+            Grid.Column="3"
+            Height="30"
+            VerticalContentAlignment="Center"/>
+        <PasswordBox
+            x:Name="pswNewPassword"
+            Grid.Row="2"
+            Grid.Column="3"
+            Height="30"
+            VerticalContentAlignment="Center"/>
+        <PasswordBox
+            x:Name="pswCmfPassword"
+            Grid.Row="3"
+            Grid.Column="3"
+            Height="30"
+            VerticalContentAlignment="Center"/>
+        <Button
+            x:Name="btnSave"
+            Grid.Row="5"
+            Grid.Column="2"
+            Content="Save"
+            Height="30"
+            Margin="10 0" 
+            Click="btnSave_Click"/>
+        <Button 
+            x:Name="btnCancel"
+            Grid.Row="5"
+            Grid.Column="3"
+            Content="Cancel"
+            Height="30"
+            Margin="10 0" 
+            Click="btnCancel_Click"/>
+
+    </Grid>
+</Window>

@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TravelPal.Models.Travel;
+﻿using System.Collections.Generic;
+
 
 namespace TravelPal
 {
     internal class TravelManager
     {
-        List<Travel> travels = new();
+        List<Models.Travels.Travel> travels = new();
 
-        public void addTravel(Travel travelToAdd)
+        public void addTravel(Models.Travels.Travel travelToAdd)
         {
             travels.Add(travelToAdd);
         }
 
-        public void removeTravel(Travel travel)
+        public void removeTravel(Models.Travels.Travel travelToRemove)
         {
-            //TODO
+            travels.Remove(travelToRemove);
         }
     }
 }
