@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using TravelPal.Models.Enums;
+using TravelPal.Models.Travels;
 using TravelPal.Models.User;
 
 namespace TravelPal
@@ -44,7 +47,36 @@ namespace TravelPal
 
             return validInputs;
         }
+        public void removeTravel(User userToUpdate, Travel travel)
+        {
+            int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));
+            User signedInUser = (User)this.signedInUser;
+            User userToRemove = (User)users[userIndex];
+            userToRemove.removeTravel(travel);
+            signedInUser.removeTravel(travel);
+            //users.Remove(signedInUser);
+            //users.Add(signedInUser);
+            //users[userIndex] = userToRemove;
+            //this.signedInUser = signedInUser;
+        }
+        public void addTravel(User userToUpdate, Travel travel)
+        {
+            int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));
+            User signedInUser = (User)this.signedInUser;
+            User userToAdd = (User)users[userIndex];
+            userToAdd.addTravel(travel);
+            users.RemoveAt(userIndex);
+            users.Add(userToAdd);
+            this.signedInUser = userToAdd;
 
+            //users[userIndex] = userToRemove;
+        }
+        public void updateCountry(IUser userToUpdate, Country country)
+        {
+            int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));
+            users[userIndex].Location = country;
+            signedInUser.Location = country;
+        }
         public void updatePassword(IUser userToUpdate, string newPassword)
         {
             int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));

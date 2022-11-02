@@ -3,7 +3,7 @@ using TravelPal.Models.Enums;
 
 namespace TravelPal.Models.Travels
 {
-    internal class Trip : Travel 
+    public class Trip : Travel 
     {
         public TripType type { get; set; }
 

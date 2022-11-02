@@ -36,6 +36,7 @@ namespace TravelPal
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+
             if (pswNewPassword.Password.Length > 0)
             {
                 if(pswNewPassword.Password == pswCmfPassword.Password)
@@ -63,6 +64,7 @@ namespace TravelPal
                         userManager.updateUsername(userManager.signedInUser, txtUsername.Text);
                     }
 
+
                     TravelsWindow travelsWindow = new(userManager);
                     travelsWindow.Show();
                     this.Close();
@@ -71,6 +73,8 @@ namespace TravelPal
                 {
                     MessageBox.Show("Passwords dont match");
                 }
+                userManager.updateCountry(userManager.signedInUser, (Country)cmbCountry.SelectedItem);
+
             }
             else
             {

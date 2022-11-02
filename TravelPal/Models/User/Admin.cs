@@ -7,7 +7,7 @@ using TravelPal.Models.Enums;
 
 namespace TravelPal.Models.User
 {
-    internal class Admin : IUser
+    public class Admin : IUser
     {
         public string Username { get; set; }
         public string Password { get; set; }

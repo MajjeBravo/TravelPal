@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using TravelPal.Models.Enums;
+using TravelPal.Models.Travels;
 
 namespace TravelPal.Models.User
 {
-    internal class User : IUser
+    public class User : IUser
     {
         public string Username { get; set; }
         public string Password { get; set; }
         public Country Location { get; set; }
 
-        public List<Travels.Travel> Travels = new(); 
+        public List<Travel> Travels = new(); 
 
 
 
@@ -18,6 +19,16 @@ namespace TravelPal.Models.User
             Username = username;
             Password = password;
             Location = location;
+        }
+
+        public void addTravel(Travel travelToAdd)
+        {
+            Travels.Add(travelToAdd);
+        }
+
+        public void removeTravel(Travel travelToRemove)
+        {
+            Travels.Remove(travelToRemove);
         }
 
     }

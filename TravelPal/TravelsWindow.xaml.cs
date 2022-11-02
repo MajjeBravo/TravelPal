@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,7 +16,6 @@ namespace TravelPal
     {
         private UserManager userManager;
 
-        private TravelManager travelManager = new();
 
         public TravelsWindow(UserManager userManager)
         {
@@ -28,24 +28,50 @@ namespace TravelPal
                 this.Close();
                 return;
             }
-          
 
-            User user = (User)userManager.signedInUser;
-            
-
-            user.Travels.ForEach(travel =>
+            if(userManager.signedInUser.GetType() == typeof(Admin))
             {
-                ListViewItem item = new();
-      
-                item.Content = travel.GetInfo();
-                item.Tag = travel;
-                lvListView.Items.Add(item);
+                Admin user = (Admin)userManager.signedInUser;
+                lblUsername.Content = user.Username;
+                userManager.users.ForEach(user =>
+                {
+                    if (user.GetType() == typeof(User))
+                    {
 
+                        User theUser = (User)user;
+
+                        TreeViewItem treeViewItem = new();
+                        //treeViewItem.ItemsSource = theUser.Travels.Select((travel, i) => (i+1) + ": " + travel.GetInfo());
+                        treeViewItem.Tag = user;
+                        treeViewItem.Header = user.Username;
+                        tTreeView.Items.Add(treeViewItem);
+                        
+
+                    }
+
+                });
+               
+
+            }
+            else
+            {
+                User user = (User)userManager.signedInUser;
+                user.Travels.ForEach(travel =>
+                {
+                    TreeViewItem item = new();
+
+                    item.Header = travel.GetInfo();
+                    item.Tag = travel;
+                    tTreeView.Items.Add(item);
+                    lblUsername.Content = user.Username;
                 }
-            );
-            lblUsername.Content = user.Username;
+                 );
+            }
+
 
         }
+
+   
 
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
@@ -65,7 +91,7 @@ namespace TravelPal
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            if (lvListView.SelectedItems.Count == 0)
+            if (tTreeView.SelectedItem == null)
             {
                 MessageBox.Show("To show details, please select an item from the list!");
                 return;
@@ -75,20 +101,34 @@ namespace TravelPal
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            if (lvListView.SelectedItems.Count == 0)
+            if (tTreeView.SelectedItem == null)
             {
                 MessageBox.Show("To remove, please select an item from the list!");
                 return;
             }
-            ListViewItem selectedItem = lvListView.SelectedItem as ListViewItem;
-            travelManager.removeTravel(selectedItem.Tag as Travel);
-            lvListView.Items.RemoveAt(lvListView.SelectedIndex);
-            
+            TreeViewItem selectedItem = tTreeView.SelectedItem as TreeViewItem;
+
+            if(userManager.signedInUser.GetType() == typeof(User))
+            {
+                userManager.removeTravel((User)userManager.signedInUser, selectedItem.Tag as Travel);
+                tTreeView.Items.Remove(selectedItem);
+            }
+            else // if admin
+            {
+                User userToRemoveTravelFrom = (User)selectedItem.Tag;
+
+                RemoveTravelWindow removeTravelWindow = new(userToRemoveTravelFrom);
+                removeTravelWindow.Show();
+
+            }
+
+
+
         }
 
         private void btnSignOut_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new();
+            MainWindow mainWindow = new(userManager);
             mainWindow.Show();
             this.Close();
             

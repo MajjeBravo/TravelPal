@@ -5,7 +5,7 @@ using TravelPal.Models.Enums;
 
 namespace TravelPal.Models.Travels
 {
-    internal class Vacation : Travel
+    public class Vacation : Travel
     {
 
         public bool AllInclusive { get; set; }

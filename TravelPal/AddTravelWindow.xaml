@@ -43,7 +43,7 @@
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
-            Text="Departure country:"
+            Text="Departure Location:"
             TextWrapping="Wrap"
             Foreground="White"
             />
@@ -93,7 +93,8 @@
             Grid.Column="1"
             Grid.Row="5"
             Content="Add"
-            Margin="10" Click="btnAdd_Click"
+            Margin="10" 
+            Click="btnAdd_Click"
             HorizontalContentAlignment="Center"/>
         <ComboBox
             x:Name="cmbTripType"

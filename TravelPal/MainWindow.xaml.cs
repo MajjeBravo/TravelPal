@@ -26,6 +26,12 @@ namespace TravelPal
             userManager.addUser(user);
 
         }
+        public MainWindow(UserManager userManager)
+        {
+            InitializeComponent();
+            this.userManager = userManager;
+
+        }
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
