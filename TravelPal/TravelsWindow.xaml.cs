@@ -28,6 +28,7 @@ namespace TravelPal
                 this.Close();
                 return;
             }
+          
 
             User user = (User)userManager.signedInUser;
             
@@ -48,12 +49,10 @@ namespace TravelPal
 
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void btnUser_Click(object sender, RoutedEventArgs e)
-        {
-
+            AddTravelWindow addTravelWindow = new(userManager);
+            addTravelWindow.Show();
+            Close();
+            
         }
 
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)

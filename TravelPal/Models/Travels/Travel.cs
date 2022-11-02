@@ -3,7 +3,7 @@ using TravelPal.Models.Enums;
 
 namespace TravelPal.Models.Travels
 {
-     abstract class Travel
+     public class Travel
     {
         public string destination { get; set; }
 

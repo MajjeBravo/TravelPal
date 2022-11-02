@@ -19,9 +19,19 @@ namespace TravelPal
     /// </summary>
     public partial class AddTravelWindow : Window
     {
-        public AddTravelWindow()
+        private UserManager userManager;
+        public AddTravelWindow(UserManager userManager)
         {
             InitializeComponent();
+            
+            this.userManager = userManager;
+
+        }
+
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            return;
         }
     }
 }

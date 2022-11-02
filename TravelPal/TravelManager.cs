@@ -3,7 +3,7 @@
 
 namespace TravelPal
 {
-    internal class TravelManager
+    public class TravelManager
     {
         List<Models.Travels.Travel> travels = new();
 

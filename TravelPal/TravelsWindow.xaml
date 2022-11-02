@@ -72,20 +72,12 @@
             x:Name="btnDetails"
             Grid.Row="5"
             Grid.Column="2"
-            Content="Details"
+            Content="Trip Details"
             Height="30"
             Margin="10,18,10,17" 
             Click="btnDetails_Click"/>
 
-        <Button
-            x:Name="btnUser"
-            Grid.Row="0"
-            Grid.Column="3"
-            Content="User"
-            Height="30"
-            Margin="10 0" 
-            Click="btnUser_Click"/>
-        <Button
+             <Button
             x:Name="btnUserDetails"
             Grid.Row="0"
             Grid.Column="4"
