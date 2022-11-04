@@ -23,9 +23,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-
-
-
         </Grid.RowDefinitions>
 
 
@@ -110,7 +107,15 @@
             Margin="10"
             IsEnabled="False"
             />
-        <ListView x:Name="lvPackingList" Grid.Column="4" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionMode="Single" Margin="0,56,32,10" Grid.RowSpan="5" Grid.ColumnSpan="2" IsEnabled="False">
+        <ListView x:Name="lvPackingList" 
+                  Grid.Column="4" 
+                  d:ItemsSource="{d:SampleData ItemCount=5}" 
+                  SelectionMode="Single" 
+                  Margin="0,56,32,10" 
+                  Grid.RowSpan="5" 
+                  Grid.ColumnSpan="2" 
+                  VerticalContentAlignment="Top"
+                  IsEnabled="False">
 
         </ListView>
         <TextBlock
@@ -162,6 +167,24 @@
             Grid.Row="5" 
             VerticalAlignment="Center" 
             />
-        <TextBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  x:Name="tbTravelDays" HorizontalAlignment="Center" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Grid.Column="1" Margin="0,12,0,0"/>
+        <TextBox HorizontalContentAlignment="Center" 
+                 VerticalContentAlignment="Center"  
+                 x:Name="tbTravelDays" 
+                 HorizontalAlignment="Center" 
+                 Grid.Row="6" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="120" 
+                 IsEnabled="False" 
+                 Grid.Column="1" 
+                 Margin="0,12,0,0"/>
+        <Button
+            x:Name="btnCancel"
+            Grid.Row="6"
+            Grid.Column="5"
+            Content="Cancel"
+            Height="30"
+            Margin="10 0" 
+            Click="btnCancel_Click"/>
     </Grid>
 </Window>

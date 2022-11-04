@@ -50,7 +50,7 @@ namespace TravelPal
             }
             else
             {
-                lblWarning.Content = "Username or password wrong!";
+                lblWarning.Content = "Username or password wrong, Try Again!";
             }
         }
 

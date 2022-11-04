@@ -154,7 +154,7 @@ namespace TravelPal
 
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Info TravelPal");
+            MessageBox.Show("Info TravelPal, App to help manage your travels - Created 2022");
         }
     }
 }

@@ -54,7 +54,11 @@ namespace TravelPal
 
             lvPackingList.ItemsSource = travel.PackingList;
         }
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
-        
+
     }
 }

@@ -121,6 +121,7 @@ namespace TravelPal
 
                 }
 
+
                 lvPackingList.Items.Add(new OtherItem(tbPackingListItemLabel.Text, quantity));
 
             }
@@ -229,6 +230,11 @@ namespace TravelPal
                 TravelsWindow travelsWindow = new TravelsWindow(userManager);
                 travelsWindow.Show();
           
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
     

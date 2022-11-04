@@ -25,65 +25,72 @@
         </Grid.RowDefinitions>
 
         <Label 
-            Grid.Row="2"
+            Grid.Row="1"
             Grid.Column="2"
             Content="Username"
             VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             Foreground="White"/>
         <Label 
-            Grid.Row="3"
+            Grid.Row="2"
             Grid.Column="2"
             Content="Password"
             VerticalAlignment="Center"
+            HorizontalAlignment="Center"
             Foreground="White"/>
-        <Label 
-            Grid.Row="1"
+        <Label
             Grid.Column="2"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
             Content="TravelPal"
             FontFamily="Arial"
             FontWeight="Bold"
             Foreground="MintCream"
             FontSize="40"
+            Margin="84,0,0,0"
             VerticalAlignment="Center"
-            HorizontalAlignment="Center"/>
+            HorizontalAlignment="Left" 
+            Width="233"/>
         <Label 
             x:Name="lblWarning"
             Grid.Row="5"
-            Grid.Column="1"
+            Grid.Column="2"
             Content=""
             VerticalAlignment="Center"
             Foreground="White" 
-            Grid.ColumnSpan="4" 
-            Margin="126,0,0,0"/>
+            Grid.ColumnSpan="3" 
+            Margin="67,0,0,0"/>
 
         <TextBox
             x:Name="txtUsername"
-            Grid.Row="2"
+            Grid.Row="1"
             Grid.Column="3"
             Height="30"
+            Margin="0, 0, 10, 0"
             VerticalContentAlignment="Center"/>
         <PasswordBox
             x:Name="pswPassword"
-            Grid.Row="3"
+            Grid.Row="2"
             Grid.Column="3"
             Height="30"
+            Margin="0, 0, 10, 0"
             VerticalContentAlignment="Center"/>
         <Button
             x:Name="btnRegister"
             Grid.Row="4"
-            Grid.Column="2"
+            Grid.Column="3"
+            Margin="0, 0, 10, 0"
             Content="Register"
             Height="30"
-            Margin="10 0" 
+            
             Click="btnRegister_Click"/>
         <Button 
             x:Name="btnSignIn"
-            Grid.Row="4"
+            Grid.Row="3"
             Grid.Column="3"
+            Margin="0, 0, 10, 0"
             Content="Sign In"
             Height="30"
-            Margin="10 0" 
+             
             Click="btnSignIn_Click"
             IsDefault="True"
             />
