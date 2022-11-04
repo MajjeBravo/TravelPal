@@ -157,8 +157,8 @@ namespace TravelPal
 
             }
 
-            DateTime startDate = cDatePicker.SelectedDates.First();
-            DateTime endDate = cDatePicker.SelectedDates.Last();
+            DateTime startDate = cDatePicker.SelectedDates[0];
+            DateTime endDate = cDatePicker.SelectedDates[cDatePicker.SelectedDates.Count()-1];
 
             if (cmbTravelType.Text == "Trip")
             {
@@ -173,70 +173,16 @@ namespace TravelPal
             }
 
 
-            TravelsWindow travelsWindow = new(userManager);
             
-            travelsWindow.Show();
             this.Close();
 
 
 
-            //if (selectedTripType == "Trip")
-            //{
-            //    string tripTypeString = cmbTripType.SelectedItem as string;
+           
 
 
 
-            //    TripType tripType = (TripType)Enum.Parse(typeof(TripType), tripTypeString);
-
-
-
-            //    Travel newTravel = travelManager.AddTravel(departureCountry, country, numberOfTravelers, tripType);
-
-            //    if (userManager.signedInUser is User)
-            //    {
-            //        User user = userManager.signedInUser as User;
-
-
-
-            //        user.Travels.Add(newTravel);
-
-
-
-            //        userManager.signedInUser = user;
-            //    }
-            //}
-            //else if (selectedTravelType == "Vacation")
-            //{
-            //    bool allInclusive = (bool)cmbAllInclusive.IsChecked;
-
-
-
-            //    Travel newTravel = travelManager.AddTravel(departureCountry, country, numberOfTravelers, allInclusive);
-
-
-
-            //    if (userManager.signedInUser is User)
-            //    {
-            //        User user = userManager.signedInUser as User;
-
-
-
-            //        user.Travels.Add(newTravel);
-
-
-
-            //        userManager.signedInUser = user;
-            //    }
-            //}
-
-
-
-            //TravelsWindow travelsWindow = new(userManager, travelManager);
-            //travelsWindow.Show();
-
-
-
-            Close();
+        
         }
 
         private void cbDocument_SelectionChanged(object sender, RoutedEventArgs e)

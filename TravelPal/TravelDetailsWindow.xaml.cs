@@ -36,8 +36,9 @@ namespace TravelPal
             cmbTravelType.SelectedItem = travel.GetType() == typeof(Trip) ? "Trip" : "Vacation";
             cmbTripType.ItemsSource = Enum.GetValues(typeof(TripType));
             tbTravelDays.Text = travel.travelDays.ToString();
-            dpStartDate.SelectedDate = travel.startDate;
-            dpEndDate.SelectedDate = travel.endDate; 
+            lbStartDate.Content = travel.startDate.ToString("dd/MM/yyyy");
+            lbEndDate.Content = travel.endDate.ToString("dd/MM/yyyy");
+           
             if (cmbTravelType.SelectedItem == "Trip")
             {
                 cmbTripType.SelectedItem = ((Trip) travel).type;

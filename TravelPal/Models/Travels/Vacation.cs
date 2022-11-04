@@ -17,7 +17,7 @@ namespace TravelPal.Models.Travels
 
         public override string GetInfo() 
         {
-            return base.destination + ", " + this.countries.ToString() + ", " + this.travellers + " travellers, Start date: " + startDate.ToString() + " , End date: " + endDate.ToString() + (AllInclusive ? " is All inclusive" : "");
+            return base.destination + ", " + this.countries.ToString() + ", " + this.travellers + " travellers, Start date: " + startDate.ToString("dd/MM/yyyy") + " , End date: " + endDate.ToString("dd/MM/yyyy") + (AllInclusive ? " is All inclusive" : "");
         }
     }
 }

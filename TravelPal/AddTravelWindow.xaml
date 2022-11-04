@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="AddTravelWindow" Closing="Window_Closing" Height="450" Width="800">
+        Title="AddTravelWindow" WindowStyle="None" Closing="Window_Closing" Height="450" Width="800">
     <Grid Margin="20" Background="MediumSlateBlue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -45,7 +45,7 @@
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
-            Text="Departure Location:"
+            Text="Destination:"
             TextWrapping="Wrap"
             Foreground="White"
             />
@@ -101,6 +101,14 @@
             Content="Add"
             Margin="10,0,10,21" 
             Click="btnAdd_Click"
+            HorizontalContentAlignment="Center"/>
+
+        <Button
+            x:Name="btnCancel"
+            Grid.Column="6"
+            Grid.Row="7"
+            Content="Cancel"
+            Margin="10,0,10,21" 
             
             HorizontalContentAlignment="Center"/>
         <ComboBox

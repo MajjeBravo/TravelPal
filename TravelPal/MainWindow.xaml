@@ -84,7 +84,9 @@
             Content="Sign In"
             Height="30"
             Margin="10 0" 
-            Click="btnSignIn_Click"/>
+            Click="btnSignIn_Click"
+            IsDefault="True"
+            />
 
     </Grid>
 </Window>
