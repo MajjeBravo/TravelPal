@@ -115,7 +115,7 @@
                   Grid.RowSpan="5" 
                   Grid.ColumnSpan="2" 
                   VerticalContentAlignment="Top"
-                  IsEnabled="False">
+                  IsEnabled="True">
 
         </ListView>
         <TextBlock
