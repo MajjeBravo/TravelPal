@@ -11,6 +11,7 @@ namespace TravelPal
         public List<IUser> users = new();
         public IUser? signedInUser { get; set; }
 
+        // Add new user 
         public bool addUser(IUser userToAdd)
         {
             int userIndex = users.FindIndex(user => user.Username.ToLower().Equals(userToAdd.Username.ToLower()));
@@ -24,13 +25,15 @@ namespace TravelPal
             return false;
 
         }
+
+        // Remove user 
         public bool removeUser(IUser user)
         {
 
             return users.Remove(user);
         }
 
-
+        // Validate userinputs to meet criteria for name and password
         public bool[] ValidateUserInput(IUser user, string username, string password)
         {
             bool[] validInputs = { false, false };
@@ -47,6 +50,8 @@ namespace TravelPal
 
             return validInputs;
         }
+
+        // Remove travel 
         public void removeTravel(User userToUpdate, Travel travel)
         {
             int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));
@@ -59,6 +64,8 @@ namespace TravelPal
             //users[userIndex] = userToRemove;
             //this.signedInUser = signedInUser;
         }
+
+        // Add new travel
         public void addTravel(User userToUpdate, Travel travel)
         {
             int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));
@@ -69,14 +76,18 @@ namespace TravelPal
             users.Add(userToAdd);
             this.signedInUser = userToAdd;
 
-            //users[userIndex] = userToRemove;
+          
         }
+
+        // Update Country
         public void updateCountry(IUser userToUpdate, Country country)
         {
             int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));
             users[userIndex].Location = country;
             signedInUser.Location = country;
         }
+
+        // Update password
         public void updatePassword(IUser userToUpdate, string newPassword)
         {
             int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));
@@ -85,7 +96,7 @@ namespace TravelPal
             signedInUser.Password = newPassword;
         }
      
-
+        // Update username
         public void updateUsername(IUser userToUpdate, string newUsername)
         {
             int userIndex = users.FindIndex(user => user.Username.Equals(userToUpdate.Username));
