@@ -36,7 +36,7 @@ namespace TravelPal
             this.userManager = userManager;
 
         }
-
+        // Sign in button to login with contingencies
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
 
@@ -50,10 +50,11 @@ namespace TravelPal
             }
             else
             {
-                lblWarning.Content = "Username or password wrong, Try Again!";
+                lblWarning.Content = "Username or Password Is Incorrect! Try Again!";
             }
         }
 
+        // Register button - open new register window and close main login window
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow registerWindow = new(userManager);

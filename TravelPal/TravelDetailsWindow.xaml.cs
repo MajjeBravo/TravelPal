@@ -21,6 +21,8 @@ namespace TravelPal
     /// Interaction logic for TravelDetailsWindow.xaml
     /// </summary>
     public partial class TravelDetailsWindow : Window
+
+        // Showing details of a current saved trip with locked inputs 
     {
         public TravelDetailsWindow(Travel travel)
         {
@@ -54,6 +56,8 @@ namespace TravelPal
 
             lvPackingList.ItemsSource = travel.PackingList;
         }
+
+        // Closing window button
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

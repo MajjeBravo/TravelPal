@@ -23,14 +23,18 @@ namespace TravelPal
     {
         private UserManager userManager;
 
+
+        // Preselected country in checkbox as index 0 "afghanistan" to avoid user to register without country
         public RegisterWindow(UserManager userManager)
         {
             InitializeComponent();
             this.userManager = userManager;
-
+            
             cmbCountry.ItemsSource = Enum.GetValues(typeof(Country));
             cmbCountry.SelectedIndex = 0;
         }
+
+        // Register button that check criterias has been met, if no warnings, if yes add user and close window
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             Country country = (Country)cmbCountry.SelectedItem;
@@ -45,15 +49,20 @@ namespace TravelPal
             }
             else
             {
-                lblWarning.Content = "Could not create user, Please check criteria!";
+                lblWarning.Content = "Could not create user, Username must be min. 3 long and Password min 5 long!";
             }
         }
        
-
+        // Button to close window if user wish to cancel - return to mainwindow
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MainWindow mainWindow = new MainWindow(userManager);
             mainWindow.Show();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

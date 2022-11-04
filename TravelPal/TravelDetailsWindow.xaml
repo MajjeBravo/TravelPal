@@ -43,6 +43,7 @@
             Text="Departure Location:"
             TextWrapping="Wrap"
             Foreground="White"
+            Margin="5,0,0,0"
             />
         <TextBox
             x:Name="txtDepartureLocation"
@@ -56,6 +57,7 @@
             Text="Arrival Country:"
             TextWrapping="Wrap"
             Foreground="White"
+            Margin="5,0,0,0"
             />
         <ComboBox
             x:Name="cbArrivalCountry"
@@ -69,6 +71,7 @@
             Text="Number of passangers:"
             TextWrapping="Wrap"
             Foreground="White"
+            
             />
         <TextBox
             x:Name="txtTravelers"
@@ -82,6 +85,7 @@
             TextWrapping="Wrap"
             VerticalAlignment="Center"
             Foreground="White"
+            Margin="5,0,0,0"
             />
         <ComboBox
             x:Name="cmbTravelType"
@@ -126,58 +130,58 @@
             HorizontalAlignment="Left"
             Foreground="White" 
             Grid.ColumnSpan="2" 
-            Margin="54,0,0,0"
-            Text="Start date:" Width="73"/>
+            Margin="5,0,0,0"
+            Text="Start date:" Width="73"
+            />
 
         <TextBlock
-            Grid.Row="5"
-            Grid.Column="2"
+            Grid.Row="6"
+            Grid.Column="0"
             TextWrapping="Wrap"
             VerticalAlignment="Top"
             Foreground="White" 
             Grid.ColumnSpan="2" 
-            Margin="67,17,58,0"
+            Margin="5,0,0,0"
             Text="End date:"/>
         <TextBlock
-            Grid.Row="6"
-            
+            Grid.Row="4"
+            Grid.Column="2"
             TextWrapping="Wrap"
             VerticalAlignment="Top"
-            Foreground="White" Grid.ColumnSpan="2" Margin="54,12,72,0"
-            ><Run Language="sv-se" Text="Travel days:"/></TextBlock>
+            HorizontalAlignment="Right"
+            Foreground="White" 
+            Margin="0,58,63,0"
+            Text="Travel days:" Grid.RowSpan="2"/>
         <Label
             
             x:Name="lbEndDate"
             FontWeight="Bold" 
-            Grid.Column="3" 
-            HorizontalAlignment="Left" 
-            Margin="10,0,0,0" 
+            HorizontalAlignment="Left"
             Grid.Row="5" 
-            VerticalAlignment="Center" 
-            Grid.ColumnSpan="2" 
-            Height="37" 
-            Width="117" 
+            VerticalAlignment="Top"   
+            Height="40" 
+            Width="126" Margin="61,58,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" 
             />
         <Label
             x:Name="lbStartDate" 
-            FontWeight="Bold"
-            Grid.Column="1" 
+            FontWeight="Bold" 
             HorizontalAlignment="Left" 
-            Margin="10,0,0,0" 
+            Margin="63,0,0,0"
             Grid.Row="5" 
-            VerticalAlignment="Center" 
+            VerticalAlignment="Center" Grid.ColumnSpan="2" Height="39" Width="122" 
             />
         <TextBox HorizontalContentAlignment="Center" 
                  VerticalContentAlignment="Center"  
                  x:Name="tbTravelDays" 
-                 HorizontalAlignment="Center" 
-                 Grid.Row="6" 
+                 HorizontalAlignment="Left"
+                  Grid.Column="2" 
+                 Grid.Row="4" 
                  TextWrapping="Wrap" 
-                 VerticalAlignment="Top" 
+                 VerticalAlignment="Top"  
                  Width="120" 
                  IsEnabled="False" 
-                 Grid.Column="1" 
-                 Margin="0,12,0,0"/>
+                 
+                 Margin="69,57,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
         <Button
             x:Name="btnCancel"
             Grid.Row="6"

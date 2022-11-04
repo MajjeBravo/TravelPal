@@ -19,6 +19,9 @@ namespace TravelPal
     /// <summary>
     /// Interaction logic for RemoveTravelWindow.xaml
     /// </summary>
+    /// 
+
+    // showing user all travels and button to remove travels if none selected - show warning message
     public partial class RemoveTravelWindow : Window
     {
         private User user;
@@ -50,6 +53,7 @@ namespace TravelPal
             lvTravels.Items.RemoveAt(lvTravels.SelectedIndex);
         }
 
+        // Closing window button
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

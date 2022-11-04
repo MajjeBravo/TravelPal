@@ -16,7 +16,7 @@ namespace TravelPal
     {
         private UserManager userManager;
 
-
+        // Check if the signed in user is admin - If yes; hide remove button, show all user and user trips button 
         public TravelsWindow(UserManager userManager)
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace TravelPal
                 this.Close();
                 return;
             }
-
+            // If signed in user admin show user in list, 
             if(userManager.signedInUser.GetType() == typeof(Admin))
             {
                 Admin user = (Admin)userManager.signedInUser;
@@ -53,7 +53,7 @@ namespace TravelPal
                         User theUser = (User)user;
 
                         TreeViewItem treeViewItem = new();
-                        //treeViewItem.ItemsSource = theUser.Travels.Select((travel, i) => (i+1) + ": " + travel.GetInfo());
+                      
                         treeViewItem.Tag = user;
                         treeViewItem.Header = user.Username;
                         tTreeView.Items.Add(treeViewItem);
@@ -85,7 +85,7 @@ namespace TravelPal
         }
 
    
-
+        // Button to add new travels 
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
             AddTravelWindow addTravelWindow = new(userManager);
@@ -93,7 +93,7 @@ namespace TravelPal
             Close();
             
         }
-
+        // Button to update current user - change name + password + country
         private void btnUserDetails_Click(object sender, RoutedEventArgs e)
         {
             UserDetailsWindow userDetailsWindow = new(userManager);
@@ -116,7 +116,7 @@ namespace TravelPal
             travelDetailsTravelWindow.Show();
 
         }
-
+        // Button Remove to delete current trips from list
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             if (tTreeView.SelectedItem == null)
@@ -144,6 +144,7 @@ namespace TravelPal
 
         }
 
+        // Sign out button, closes window and opens up MainWindow
         private void btnSignOut_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new(userManager);
@@ -152,6 +153,7 @@ namespace TravelPal
             
         }
 
+        // Info button with random info about travelpal
         private void btnInfo_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Info TravelPal, App to help manage your travels - Created 2022");

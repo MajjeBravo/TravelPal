@@ -23,6 +23,8 @@ namespace TravelPal
     public partial class UserDetailsWindow : Window
     {
         private UserManager userManager = new();
+
+
         public UserDetailsWindow(UserManager userManager)
         {
             InitializeComponent();
@@ -33,7 +35,11 @@ namespace TravelPal
             cmbCountry.ItemsSource = Enum.GetValues(typeof(Country));
             cmbCountry.SelectedIndex = cmbCountry.Items.IndexOf(user.Location);
         }
-
+        // Save button that checks if all criteras have been met to update userdetails with messageboxes
+        // New username where the current one is already preshowing
+        // New password
+        // Confirm new password check with new password input
+        // Country selection
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
@@ -45,7 +51,7 @@ namespace TravelPal
 
                     if (!validateInputs[0])
                     {
-                        MessageBox.Show("Username is already taken");
+                        MessageBox.Show("User already exists");
                         return;
                     }
                     if(!validateInputs[1])
@@ -81,7 +87,8 @@ namespace TravelPal
                 MessageBox.Show("Enter your password to save changes");
             }
         }
-
+        
+        // Cancel button that closes window and opens TravelsWindow
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             TravelsWindow travelsWindow = new TravelsWindow(userManager);
