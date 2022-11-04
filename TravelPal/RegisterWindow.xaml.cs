@@ -39,7 +39,8 @@ namespace TravelPal
 
             if (userManager.addUser(newUser))
             {
-                
+                MainWindow mainWindow = new MainWindow(userManager);
+                mainWindow.Show();
                 this.Close();
             }
             else
@@ -47,7 +48,13 @@ namespace TravelPal
                 lblWarning.Content = "Could not create user, Please check criteria!";
             }
         }
+       
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow(userManager);
+            mainWindow.Show();
+        }
     }
 }
 

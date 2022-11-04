@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="AddTravelWindow" Height="450" Width="800">
+        Title="AddTravelWindow" Closing="Window_Closing" Height="450" Width="800">
     <Grid Margin="20" Background="MediumSlateBlue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -16,6 +16,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -60,6 +62,7 @@
             TextWrapping="Wrap"
             Foreground="White"/>
         <ComboBox
+            SelectionChanged="cbArrivalCountry_SelectionChanged"
             x:Name="cbArrivalCountry"
             Grid.Row="2"
             Grid.Column="1"
@@ -74,6 +77,7 @@
             x:Name="txtTravelers"
             Grid.Row="3"
             Grid.Column="1"
+            Text="1"
             Margin="10"/>
         <TextBlock
             Grid.Row="4"
@@ -92,10 +96,10 @@
             />
         <Button
             x:Name="btnAdd"
-            Grid.Column="1"
-            Grid.Row="5"
+            Grid.Column="6"
+            Grid.Row="7"
             Content="Add"
-            Margin="10" 
+            Margin="10,0,10,21" 
             Click="btnAdd_Click"
             
             HorizontalContentAlignment="Center"/>
@@ -115,5 +119,53 @@
             Margin="10"
             IsEnabled="True"
             />
+        <ListView x:Name="lvPackingList" 
+                  Grid.Column="3" 
+                  Grid.Row="3" 
+                  d:ItemsSource="{d:SampleData ItemCount=5}" 
+                  Margin="0,52,10,10" 
+                  Grid.RowSpan="4"
+                  
+                 
+                  Grid.ColumnSpan="3">
+           
+        </ListView>
+        <Calendar x:Name="cDatePicker" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Top" SelectionMode="SingleRange" Grid.ColumnSpan="2" Margin="0,51,0,0" Grid.RowSpan="4"/>
+        <CheckBox  Click="cbDocument_SelectionChanged" 
+                   x:Name="cbDocument" Grid.Column="4" Content="Document" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+        <CheckBox x:Name="cbRequired"  Grid.Column="5" Content="Required" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Center" Visibility="Hidden"/>
+        <TextBox x:Name="tbQuantity" Grid.Column="5" HorizontalAlignment="Left" Margin="10,21,0,0" Grid.Row="1" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
+        <Button
+            Click="btnAddItem_Click"
+            x:Name="btnAddItem" Grid.Column="5" Content="Add Item&#xD;&#xA;" HorizontalAlignment="Left" Margin="45,29,0,0" Grid.Row="2" VerticalAlignment="Top" Width="72" Height="27" Grid.RowSpan="2"/>
+        <TextBox 
+            x:Name="tbPackingListItemLabel" 
+            Grid.Column="3" 
+            Grid.ColumnSpan="2" 
+            HorizontalAlignment="Left" 
+            Margin="10,18,0,0" 
+            TextWrapping="Wrap" 
+            
+            VerticalAlignment="Top" 
+            Width="120" 
+            Grid.Row="1"/>
+        <TextBlock
+            Grid.Row="5"
+            Grid.Column="0"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            Foreground="White" Grid.ColumnSpan="2" Margin="0,13,126,0"><Run Language="sv-se" Text="Travel days:"/></TextBlock>
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="4"
+            TextWrapping="Wrap"
+            Foreground="White" Grid.ColumnSpan="2" Margin="10,51,118,4" Grid.RowSpan="2"
+            ><Run Language="sv-se" Text="Packing list:"/></TextBlock>
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="2"
+            TextWrapping="Wrap"
+            Foreground="White" Grid.ColumnSpan="2" Margin="12,8,117,47" Grid.RowSpan="2"
+            ><Run Language="sv-se" Text="Add item:"/></TextBlock>
     </Grid>
 </Window>

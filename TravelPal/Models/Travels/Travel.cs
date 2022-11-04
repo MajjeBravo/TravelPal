@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using TravelPal.Models.Enums;
-
+using TravelPal.Models.PackingListItems;
 namespace TravelPal.Models.Travels
 {
      public class Travel
@@ -16,30 +17,33 @@ namespace TravelPal.Models.Travels
         public DateTime startDate { get; set; }
 
         public DateTime endDate { get; set; }
+        public int travelDays
+        {
+            get => CalculateTravelDays();
+        }
 
-        public int travelDays { get; set; }
+        public List<PackingListItem> PackingList { get; set; }
 
-        public Travel(string destination, Country countries, int travellers, DateTime startDate, DateTime endDate, int travelDays)
+        public Travel(string destination, Country countries, int travellers, DateTime startDate, DateTime endDate, List<PackingListItem> packingList)
         {
             this.destination = destination;
             this.countries = countries;
             this.travellers = travellers;
             this.startDate = startDate;
             this.endDate = endDate;
-            this.travelDays = travelDays;
+            this.PackingList = packingList;
         }
 
-        public virtual string GetInfo() // TODO Virtual get info VG
+        public virtual string GetInfo() 
         {
-            return this.destination + ", " + this.countries.ToString() + ", " + this.travellers + " travellers, Start date: " + startDate.ToString() + ", End date: " + endDate.ToString();
+            return this.destination + ", " + this.countries.ToString() +" "+CalculateTravelDays()+" days";
         }
 
-        private int calculateTravelDays()
+        private int CalculateTravelDays()
         {
-            return (int)(endDate - startDate).TotalDays;
+            return (int)(endDate - startDate).TotalDays+1;
 
         }
-
 
     }
 }

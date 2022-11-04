@@ -28,7 +28,7 @@ namespace TravelPal
             this.user = user;
 
             InitializeComponent();
-
+           lblUsername.Content = user.Username;
             user.Travels.ForEach(travel =>
             {
                 ListViewItem item = new();

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using TravelPal.Models.Enums;
+using TravelPal.Models.PackingListItems;
 using TravelPal.Models.User;
 
 namespace TravelPal
@@ -17,8 +19,10 @@ namespace TravelPal
             InitializeComponent();
             Admin admin = new Admin("admin","password", Country.Sweden);
             User user = new User("Gandalf", "password", Country.Sweden);
-            Models.Travels.Trip gibraltar = new("Gibraltar", Country.Spain, 3, DateTime.Now, DateTime.Now.AddDays(4), 4, TripType.Leisure);
-            Models.Travels.Vacation kandahar = new("Kandahar", Country.Afghanistan, 8, DateTime.Now, DateTime.Now.AddDays(4), 4, true);
+            List<PackingListItem> packingList = new();
+            packingList.Add(new TravelDocument("Passport", false));
+            Models.Travels.Trip gibraltar = new("Gibraltar", Country.Spain, 3, DateTime.Now, DateTime.Now.AddDays(4), packingList,TripType.Leisure);
+            Models.Travels.Vacation kandahar = new("Kandahar", Country.Denmark, 8, DateTime.Now, DateTime.Now.AddDays(4), packingList, true);
             user.Travels.Add(gibraltar);
             user.Travels.Add(kandahar);
 
@@ -53,7 +57,7 @@ namespace TravelPal
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow registerWindow = new(userManager);
-
+            this.Close();
             registerWindow.Show();
             
         }

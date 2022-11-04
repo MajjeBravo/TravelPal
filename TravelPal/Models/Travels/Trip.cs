@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using TravelPal.Models.Enums;
+using TravelPal.Models.PackingListItems;
 
 namespace TravelPal.Models.Travels
 {
@@ -7,7 +9,7 @@ namespace TravelPal.Models.Travels
     {
         public TripType type { get; set; }
 
-        public Trip(string destination, Country countries, int travellers, DateTime startDate, DateTime endDate, int travelDays, TripType type) : base(destination, countries, travellers, startDate, endDate, travelDays)
+        public Trip(string destination, Country countries, int travellers, DateTime startDate, DateTime endDate, List<PackingListItem> packingList, TripType type) : base(destination, countries, travellers, startDate, endDate, packingList)
         {
             this.type = type;
         }

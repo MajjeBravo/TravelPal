@@ -24,6 +24,14 @@ namespace TravelPal
             if (userManager.signedInUser.GetType() == typeof(Admin))
             {
                 btnAddTravel.Visibility = Visibility.Hidden;
+                btnDetails.Visibility = Visibility.Hidden;
+                btnRemove.Content = "User trips";
+            }
+            else
+            {
+                    btnAddTravel.Visibility = Visibility.Visible;
+                    btnDetails.Visibility = Visibility.Visible;
+                    btnRemove.Content = "Remove";
             }
             DateTime date = new DateTime();
 
@@ -60,6 +68,7 @@ namespace TravelPal
             else
             {
                 User user = (User)userManager.signedInUser;
+                lblUsername.Content = user.Username;
                 user.Travels.ForEach(travel =>
                 {
                     TreeViewItem item = new();
@@ -67,7 +76,7 @@ namespace TravelPal
                     item.Header = travel.GetInfo();
                     item.Tag = travel;
                     tTreeView.Items.Add(item);
-                    lblUsername.Content = user.Username;
+                    
                 }
                  );
             }
@@ -100,6 +109,11 @@ namespace TravelPal
                 MessageBox.Show("To show details, please select an item from the list!");
                 return;
             }
+
+            TreeViewItem selectedItem = tTreeView.SelectedItem as TreeViewItem;
+
+            TravelDetailsWindow travelDetailsTravelWindow = new(selectedItem.Tag as Travel);
+            travelDetailsTravelWindow.Show();
 
         }
 

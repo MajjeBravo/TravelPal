@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TravelPal.Models.Enums;
+using TravelPal.Models.PackingListItems;
 using TravelPal.Models.Travels;
 using TravelPal.Models.User;
 
@@ -51,15 +52,80 @@ namespace TravelPal
             cmbTripType.Items.Add("Leisure");
             cmbTripType.Items.Add("Work");
             cmbTripType.SelectedIndex = 0;
+            cDatePicker.SelectedDate = DateTime.Now;
 
 
 
-
+            setPassportItem(userManager.signedInUser.Location, (Country)cbArrivalCountry.SelectedItem);
             this.userManager = userManager;
+
+            
+        }
+        
+
+
+        public bool isPassportRequired(Country departureCountry, Country destinationCountry)
+        {
+
+
+            return !(isEuCountry(departureCountry) && isEuCountry(destinationCountry));
         }
 
-        
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        public bool isEuCountry(Country country)
+        {
+
+            return Enum.GetNames(typeof(EuCountry)).Contains(country.ToString());
+
+        }
+        public void setPassportItem(Country departureCountry,Country destinationCountry )
+        {
+            if(hasPassportItemInPackingList())
+            {
+                getPassportItem().Required = isPassportRequired(departureCountry, destinationCountry);
+                lvPackingList.Items.Refresh();
+            }
+            else
+            {
+                TravelDocument passportDocument = new TravelDocument("Passport", isPassportRequired(departureCountry, destinationCountry));
+                lvPackingList.Items.Add(passportDocument);
+
+            }
+        }
+
+        public TravelDocument getPassportItem()
+        {
+            return (TravelDocument)lvPackingList.Items.GetItemAt(0);
+        }
+        public bool hasPassportItemInPackingList()
+        {
+
+            return lvPackingList.Items.Count > 0;
+
+        }
+
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            if(cbDocument.IsChecked.Value)
+            {
+                lvPackingList.Items.Add(new TravelDocument(tbPackingListItemLabel.Text, cbRequired.IsChecked.Value));
+            }
+            else
+            {
+
+                int quantity = 0;
+              
+                if (!int.TryParse(tbQuantity.Text, out quantity))
+                {
+                    MessageBox.Show("Quantity must be number.");
+                    return;
+
+                }
+
+                lvPackingList.Items.Add(new OtherItem(tbPackingListItemLabel.Text, quantity));
+
+            }
+        }
+            private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             int i = 0;
             if(txtDepartureLocation.Text.Length < 3)
@@ -80,16 +146,29 @@ namespace TravelPal
 
 
             User signedInUser = (User)userManager.signedInUser;
+            List<PackingListItem> packingList = lvPackingList.Items.Cast<PackingListItem>().Select(Item => (PackingListItem)Item).ToList();
 
 
-            if(cmbTravelType.Text == "Trip")
+
+            if (cDatePicker.SelectedDates == null || cDatePicker.SelectedDates.Count < 1 )
             {
-                userManager.addTravel(signedInUser, new Trip(departureLocation, arrivalCountry, numberOfTravelers, DateTime.Now, DateTime.Now, 1, cmbTripType.Text == "Leisure" ? TripType.Leisure : TripType.Work));
+                MessageBox.Show("Select travel day.");
+                return;
+
+            }
+
+            DateTime startDate = cDatePicker.SelectedDates.First();
+            DateTime endDate = cDatePicker.SelectedDates.Last();
+
+            if (cmbTravelType.Text == "Trip")
+            {
+                userManager.addTravel(signedInUser, new Trip(departureLocation, arrivalCountry, numberOfTravelers, startDate,endDate, packingList, cmbTripType.Text == "Leisure" ? TripType.Leisure : TripType.Work));
 
             }
             else
             {
-                userManager.addTravel(signedInUser, new Vacation(departureLocation, arrivalCountry, numberOfTravelers, DateTime.Now, DateTime.Now, 1, (bool)cmbAllInclusive.IsChecked));
+
+                 userManager.addTravel(signedInUser, new Vacation(departureLocation, arrivalCountry, numberOfTravelers, startDate, endDate, packingList, (bool)cmbAllInclusive.IsChecked));
 
             }
 
@@ -160,8 +239,27 @@ namespace TravelPal
             Close();
         }
 
+        private void cbDocument_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if(cbDocument.IsChecked.Value)
+            {
+                cbRequired.Visibility = Visibility.Visible;
+                tbQuantity.Visibility = Visibility.Hidden;
+
+            }
+            else
+            {
+                cbRequired.Visibility = Visibility.Hidden;
+                tbQuantity.Visibility = Visibility.Visible;
+            }
+        }
+        private void cbArrivalCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            setPassportItem(userManager.signedInUser.Location, (Country)cbArrivalCountry.SelectedItem);
+            lvPackingList.UpdateLayout();
 
 
+        }
         private void cmbTravelType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             String selectedTravelType = cmbTravelType.SelectedItem as string;
@@ -178,6 +276,14 @@ namespace TravelPal
             }
         }
 
-       
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            
+            
+                TravelsWindow travelsWindow = new TravelsWindow(userManager);
+                travelsWindow.Show();
+          
+        }
     }
+    
 }
